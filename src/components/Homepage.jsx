@@ -3,7 +3,7 @@ import AllArticles from "./AllArticles"
 
 const Home = () => {
     return <>
-    <AllArticles />
+    <AllArticles/>
     </>
 }
 

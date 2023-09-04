@@ -5,6 +5,7 @@ body {
   text-align: center;
   background-color: #785784;
   color: black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -57,6 +58,11 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  line-height: 1.5;
+}
+
+.article-body {
+  max-width: 800px;
 }
 
 .article-content img {

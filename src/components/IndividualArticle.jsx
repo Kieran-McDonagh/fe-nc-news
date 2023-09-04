@@ -15,10 +15,10 @@ const IndividualArticle = () => {
   return (
     <article className="individual-article">
       <section className="article-content">
-        <span>{articleToDisplay.title}</span>
-        <span>Author: {articleToDisplay.author}</span>
+        <h2 className="article-title">{articleToDisplay.title}</h2>
+        <h3 className="article-author">Author: {articleToDisplay.author}</h3>
         <img src={articleToDisplay.article_img_url} alt="" />
-        <p>{articleToDisplay.body}</p>
+        <p className="article-body">{articleToDisplay.body}</p>
       </section>
       <section className="article-votes">
         <span>{articleToDisplay.votes}</span>

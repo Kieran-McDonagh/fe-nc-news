@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
+
 const Navigation = () => {
     return <nav>
-        <ul>
-            <li>categories</li>
-            <li>home</li>
-            <li><input type="text" /><button>search</button></li>
-            <li>user image</li>
-        </ul>
+            <Link to={`/`} style={{color: 'black', textDecoration: 'none', fontFamily: 'Arial'}}>
+            <span className="home-nav">Home</span>
+            </Link>
+            <span><img className="user-img" src='../public/placeholder.png' alt="user-icon" /></span>
+
     </nav>
 }
 

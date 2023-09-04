@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react"
-import axios from 'axios'
 import ArticleCard from "./ArticleCard"
+import {getAllArticles} from './api-utils'
 
 const AllArticles = () => {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        axios.get('https://news-api-rist.onrender.com/api/articles').then(({data: {articles}}) => {
-    setArticles(articles)
-})
+       getAllArticles().then(({articles}) => {
+        setArticles(articles);
+       })
     }, [])
 
 return <section className="articles-list">
     {articles.map((article) => {
-        return <ArticleCard key={article.article_id} article={article}/>
+        return  <ArticleCard key={article.article_id} article={article}/>
     })}
 </section>
 }

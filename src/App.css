@@ -6,6 +6,12 @@ body {
   background-color: #785784;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 h1 {
@@ -26,14 +32,14 @@ h1 {
 }
 
 .article-card {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 400px;
   display: flex;
   flex-direction: column; 
   justify-content: center;
   align-items: center;
   margin: 10px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 20px;
   background-color: #B5C2B7;
 }
@@ -42,7 +48,15 @@ h1 {
     height: 200px;
     width: 300px;
     border-radius: 20px;
+    margin-bottom: 5px;
 }
+
+.article-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+
 
 /* Individual article styling */
 
@@ -66,21 +80,47 @@ h1 {
 }
 
 .article-content img {
+  border-radius: 10px;
   height: 250px;
   width: 350px;
 }
 
+@media screen and (min-width: 1024px) {
+  .article-content img {
+    border-radius: 10px;
+    height: 500px; 
+    width: 700px;
+  }
+}
+
+
 .article-votes {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   margin: 20px;
   gap: 10px;
 }
 
 .comments-section {
-   border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 10px auto;
+  text-align: left;
+}
+
+.comments-section ul {
+  border-radius: 10px;
+  background-color: #e9d3f1;
+  list-style-type: none;
+  
+}
+
+.comments-section li {
+  margin: 10px;
 }
 
 /* Nav */

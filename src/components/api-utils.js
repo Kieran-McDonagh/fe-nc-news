@@ -2,7 +2,6 @@ import axios from 'axios'
 
 const baseUrl = `https://news-api-rist.onrender.com/api`
 
-
 const getAllArticles = () => {
   return axios
 .get(`${baseUrl}/articles/`)
@@ -18,5 +17,12 @@ const getArticleById = (id) => {
     })
 }
 
+const getArticleCommentsById = (id) => {
+  return axios.get(`${baseUrl}/articles/${id}/comments`)
+  .then(({data}) => {
+      return data
+  })
+}
 
-export { getAllArticles, getArticleById };
+
+export { getAllArticles, getArticleById, getArticleCommentsById };

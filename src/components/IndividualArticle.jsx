@@ -1,16 +1,25 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleById } from "./api-utils";
+import Comments from "./Comments";
 
 const IndividualArticle = () => {
   const { article_id } = useParams();
   const [articleToDisplay, setArticleToDisplay] = useState("");
+  const [isloading, setIsLoading] = useState(true)
+
 
   useEffect(() => {
+    setIsLoading(true)
     getArticleById(article_id).then(({ article }) => {
       setArticleToDisplay(article);
+      setIsLoading(false)
     });
   }, [article_id]);
+
+  if (isloading) {
+    return <h2>Loading article...</h2>
+  }
 
   return (
     <article className="individual-article">
@@ -21,13 +30,11 @@ const IndividualArticle = () => {
         <p className="article-body">{articleToDisplay.body}</p>
       </section>
       <section className="article-votes">
-        <span>{articleToDisplay.votes}</span>
+        <span>Votes: {articleToDisplay.votes}</span>
         <button>👍</button>
         <button>👎</button>
       </section>
-      <section className="comments-section">
-        <p>comments go here</p>
-      </section>
+        <Comments article={articleToDisplay}/>
     </article>
   );
 };

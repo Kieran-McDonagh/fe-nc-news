@@ -1,24 +1,36 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getArticleById } from "./api-utils";
+import { getArticleById, patchVotesById } from "../utils/api-utils";
 import Comments from "./Comments";
 
 const IndividualArticle = () => {
   const { article_id } = useParams();
   const [articleToDisplay, setArticleToDisplay] = useState("");
-  const [isloading, setIsLoading] = useState(true)
-
+  const [isloading, setIsLoading] = useState(true);
+  const [hasVoted, setHasVoted] = useState(false);
+  const [votes, setVotes] = useState(0)
+  const [originalVotes, setOriginalVotes] = useState(0); 
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     getArticleById(article_id).then(({ article }) => {
       setArticleToDisplay(article);
-      setIsLoading(false)
+      setVotes(article.votes)
+      setOriginalVotes(article.votes)
+      setIsLoading(false);
+    }).catch((err) => {
+      setErr("Error fetching article.");
+      setIsLoading(false);
     });
   }, [article_id]);
 
   if (isloading) {
-    return <h2>Loading article...</h2>
+    return <h2>Loading article...</h2>;
+  }
+
+  if (err) {
+    return <h3>{err}</h3>
   }
 
   return (
@@ -30,11 +42,56 @@ const IndividualArticle = () => {
         <p className="article-body">{articleToDisplay.body}</p>
       </section>
       <section className="article-votes">
-        <span>Votes: {articleToDisplay.votes}</span>
-        <button>👍</button>
-        <button>👎</button>
+        <span>Votes: {votes}</span>
+        <button
+          onClick={() => {
+            if (!hasVoted) {
+              setVotes(votes + 1)
+              setHasVoted(true);
+              patchVotesById(article_id, 1).catch((err) => {
+                alert('Something went wrong!')
+                setVotes(originalVotes)
+                setHasVoted(false)
+              })
+            }
+          }}
+          disabled={hasVoted}
+        >
+          👍
+        </button>
+        <button
+        onClick={() => {
+          if (!hasVoted) {
+            setVotes(votes - 1)
+            setHasVoted(true);
+            patchVotesById(article_id, -1).catch((err) => {
+              alert('Something went wrong!')
+              setVotes(originalVotes)
+              setHasVoted(false)
+            })
+          }
+        }}
+        disabled={hasVoted}
+        >
+          👎
+        </button>
+        {hasVoted && (
+          <button
+            onClick={() => {
+              setVotes(originalVotes)
+              setHasVoted(false);
+              patchVotesById(article_id, originalVotes - votes).catch((err) => {
+                alert('Something went wrong!')
+              setHasVoted(true)
+              })
+              
+            }}
+          >
+            Undo Vote
+          </button>
+        )}
       </section>
-        <Comments article={articleToDisplay}/>
+      <Comments article={articleToDisplay} />
     </article>
   );
 };

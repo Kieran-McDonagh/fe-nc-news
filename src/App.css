@@ -141,3 +141,13 @@ nav {
   border-radius: 25px;
 }
 
+/* login */
+
+.login-form {
+  width: 200px;
+  margin: 20px auto;
+  background-color: #9097af;
+  border-radius: 10px;
+  padding: 10px;
+}
+

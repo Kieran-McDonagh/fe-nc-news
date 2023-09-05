@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticleCommentsById } from "./api-utils";
+import { getArticleCommentsById } from "../utils/api-utils";
 
 const Comments = ({ article }) => {
   const { article_id } = article;

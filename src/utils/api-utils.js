@@ -24,5 +24,15 @@ const getArticleCommentsById = (id) => {
   })
 }
 
+const patchVotesById = (id, num) => {
+  return axios.patch(`${baseUrl}/articles/${id}`, {
+    inc_votes: num})
+}
 
-export { getAllArticles, getArticleById, getArticleCommentsById };
+const getUsers = () => {
+  return axios.get(`${baseUrl}/users`).then(({data}) => {
+    return data
+  })
+}
+
+export { getAllArticles, getArticleById, getArticleCommentsById, patchVotesById, getUsers };

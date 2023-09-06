@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { getArticleCommentsById } from "../utils/api-utils";
+import PostComment from "./PostComment";
+
+
 
 const Comments = ({ article }) => {
   const { article_id } = article;
@@ -23,7 +26,8 @@ const Comments = ({ article }) => {
   }
 
   return (
-    <section className="comments-section">
+    <>
+     <section className="comments-section">
       <span>Comments:</span>
       {comments.map((comment) => {
         return (
@@ -35,6 +39,9 @@ const Comments = ({ article }) => {
         );
       })}
     </section>
+     <PostComment article={article} setComments={setComments}/>
+    </>
+   
   );
 };
 

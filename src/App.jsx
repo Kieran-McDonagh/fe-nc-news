@@ -20,8 +20,8 @@ function App() {
           <Route path="*" element={<ErrorPage/>} />
         </Routes>
       </>
-    );
-  }
+    )
+  } else {
   return (
     <>
       <Header />
@@ -33,6 +33,7 @@ function App() {
       </Routes>
     </>
   );
+  }
 }
 
 export default App;

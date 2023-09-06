@@ -35,4 +35,13 @@ const getUsers = () => {
   })
 }
 
-export { getAllArticles, getArticleById, getArticleCommentsById, patchVotesById, getUsers };
+const postComment = (id, username, body) => {
+  return axios.post(`${baseUrl}/articles/${id}/comments`, {
+    username: `${username}`,
+    body: `${body}`
+  }).then(({data: {addedComment}}) => {
+    return addedComment
+  })
+}
+
+export { getAllArticles, getArticleById, getArticleCommentsById, patchVotesById, getUsers, postComment };

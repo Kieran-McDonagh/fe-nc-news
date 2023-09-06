@@ -103,6 +103,17 @@ h1 {
   gap: 10px;
 }
 
+.article-votes button {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  border: none;
+}
+
+.article-votes button:hover {
+  background-color: #a7adc1;
+}
+
 .comments-section {
   border-radius: 20px;
   display: flex;
@@ -149,5 +160,94 @@ nav {
   background-color: #9097af;
   border-radius: 10px;
   padding: 10px;
+}
+
+/* login error */
+
+.invalid-login {
+  background-color: #9097af;
+  border: 2px solid #8d4e4e;
+  width: 80%;
+  border-radius: 20px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.invalid-login ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* new comment */
+
+.new-comment-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.new-comment-container label {
+  align-self: flex-start;
+}
+
+.new-comment-container textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  margin-right: 10px;
+  white-space: wrap;
+}
+
+.input-button-container {
+  display: flex;
+  justify-content: first baseline;
+  align-items: center;
+}
+
+.new-comment-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.new-comment-container button:hover {
+  background-color: #0056b3;
+}
+
+/* alert error */
+
+.alert-err {
+  background-color: #da5552;
+  border-radius: 20px;
+  width: 250px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.alert-err h3 {
+  margin: 0;
+}
+
+.alert-err button {
+  margin: 10px;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.alert-err button:hover {
+  background-color: aliceblue;
 }
 

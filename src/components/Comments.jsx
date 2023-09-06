@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { getArticleCommentsById } from "../utils/api-utils";
 import PostComment from "./PostComment";
 
-
-
 const Comments = ({ article }) => {
   const { article_id } = article;
   const [comments, setComments] = useState([]);
@@ -27,21 +25,21 @@ const Comments = ({ article }) => {
 
   return (
     <>
-     <section className="comments-section">
-      <span>Comments:</span>
-      {comments.map((comment) => {
-        return (
-          <ul className="comment" key={comment.comment_id}>
-            <li>{comment.author}:</li>
-            <li>"{comment.body}"</li>
-            <li>votes: {comment.votes}</li>
-          </ul>
-        );
-      })}
-    </section>
-     <PostComment article={article} setComments={setComments}/>
+      {" "}
+      <PostComment article={article} setComments={setComments} />
+      <section className="comments-section">
+        <span>Comments:</span>
+        {comments.map((comment) => {
+          return (
+            <ul className="comment" key={comment.comment_id}>
+              <li>{comment.author}:</li>
+              <li>"{comment.body}"</li>
+              <li>votes: {comment.votes}</li>
+            </ul>
+          );
+        })}
+      </section>
     </>
-   
   );
 };
 

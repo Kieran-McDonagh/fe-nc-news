@@ -8,29 +8,53 @@ const IndividualArticle = () => {
   const [articleToDisplay, setArticleToDisplay] = useState("");
   const [isloading, setIsLoading] = useState(true);
   const [hasVoted, setHasVoted] = useState(false);
-  const [votes, setVotes] = useState(0)
-  const [originalVotes, setOriginalVotes] = useState(0); 
+  const [votes, setVotes] = useState(0);
+  const [originalVotes, setOriginalVotes] = useState(0);
   const [err, setErr] = useState(null);
+  const [voteErr, setVoteErr] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
-    getArticleById(article_id).then(({ article }) => {
-      setArticleToDisplay(article);
-      setVotes(article.votes)
-      setOriginalVotes(article.votes)
-      setIsLoading(false);
-    }).catch((err) => {
-      setErr("Error fetching article.");
-      setIsLoading(false);
-    });
+    getArticleById(article_id)
+      .then(({ article }) => {
+        setArticleToDisplay(article);
+        setVotes(article.votes);
+        setOriginalVotes(article.votes);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setErr("Error fetching article.");
+        setIsLoading(false);
+      });
   }, [article_id]);
+
+  const handleVote = (num) => {
+    if (!hasVoted) {
+      setVotes(votes + num);
+      setHasVoted(true);
+      patchVotesById(article_id, num).catch((err) => {
+        setVoteErr("Something went wrong!");
+        setVotes(originalVotes);
+        setHasVoted(false);
+      });
+    }
+  };
+
+  const handleUndo = () => {
+    setVotes(originalVotes);
+    setHasVoted(false);
+    patchVotesById(article_id, originalVotes - votes).catch((err) => {
+      setVoteErr("Something went wrong!");
+      setHasVoted(true);
+    });
+  };
 
   if (isloading) {
     return <h2>Loading article...</h2>;
   }
 
   if (err) {
-    return <h3>{err}</h3>
+    return <h3>{err}</h3>;
   }
 
   return (
@@ -41,56 +65,49 @@ const IndividualArticle = () => {
         <img src={articleToDisplay.article_img_url} alt="" />
         <p className="article-body">{articleToDisplay.body}</p>
       </section>
-      <section className="article-votes">
-        <span>Votes: {votes}</span>
-        <button
-          onClick={() => {
-            if (!hasVoted) {
-              setVotes(votes + 1)
-              setHasVoted(true);
-              patchVotesById(article_id, 1).catch((err) => {
-                alert('Something went wrong!')
-                setVotes(originalVotes)
-                setHasVoted(false)
-              })
-            }
-          }}
-          disabled={hasVoted}
-        >
-          👍
-        </button>
-        <button
-        onClick={() => {
-          if (!hasVoted) {
-            setVotes(votes - 1)
-            setHasVoted(true);
-            patchVotesById(article_id, -1).catch((err) => {
-              alert('Something went wrong!')
-              setVotes(originalVotes)
-              setHasVoted(false)
-            })
-          }
-        }}
-        disabled={hasVoted}
-        >
-          👎
-        </button>
-        {hasVoted && (
+
+      {voteErr ? (
+        <div className="alert-err">
+          <h3>{voteErr}</h3>
           <button
             onClick={() => {
-              setVotes(originalVotes)
-              setHasVoted(false);
-              patchVotesById(article_id, originalVotes - votes).catch((err) => {
-                alert('Something went wrong!')
-              setHasVoted(true)
-              })
-              
+              setVoteErr(null);
             }}
           >
-            Undo Vote
+            retry
           </button>
-        )}
-      </section>
+        </div>
+      ) : (
+        <section className="article-votes">
+          <span>Votes: {votes}</span>
+
+          <button
+            onClick={() => {
+              handleVote(1);
+            }}
+            disabled={hasVoted}
+          >
+            👍
+          </button>
+          <button
+            onClick={() => {
+              handleVote(-1);
+            }}
+            disabled={hasVoted}
+          >
+            👎
+          </button>
+          {hasVoted && (
+            <button
+              onClick={() => {
+                handleUndo();
+              }}
+            >
+              undo ↪️
+            </button>
+          )}
+        </section>
+      )}
       <Comments article={articleToDisplay} />
     </article>
   );

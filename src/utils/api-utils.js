@@ -2,15 +2,23 @@ import axios from "axios";
 
 const baseUrl = `https://news-api-rist.onrender.com/api`;
 
-const getAllArticles = (topic) => {
-  if (!topic || topic === "All") {
-    return axios.get(`${baseUrl}/articles`).then(({ data }) => {
-      return data;
-    });
+const getAllArticles = (topic, sortby, order) => {
+  order ? order : order = 'desc'
+  topic ? topic : (topic = "All");
+  sortby ? sortby : (sortby = "created_at");
+  if (topic === "All") {
+    return axios
+      .get(`${baseUrl}/articles?sort_by=${sortby}&order=${order}`)
+      .then(({ data }) => {
+        return data;
+      });
+  } else {
+    return axios
+      .get(`${baseUrl}/articles?topic=${topic}&sort_by=${sortby}&order=${order}`)
+      .then(({ data }) => {
+        return data;
+      });
   }
-  return axios.get(`${baseUrl}/articles?topic=${topic}`).then(({ data }) => {
-    return data;
-  });
 };
 
 const getArticleById = (id) => {

@@ -260,14 +260,32 @@ nav {
 
 /* topics */
 
-.topics-container {
-  margin: 5px;
-  text-align: left;
-}
-
 .topics-container select {
   height: 30px;
   width: 100px;
   font-size: 16px;
   border-radius: 5px;
+}
+
+/* sortby */
+
+.sortby-container select {
+  height: 30px;
+  width: 100px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.sortby-container button{
+  display: inline;
+}
+
+/* filters */
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  gap: 5px;
 }

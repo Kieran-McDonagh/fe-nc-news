@@ -1,18 +1,23 @@
-
-import { useState } from "react"
-import AllArticles from "./AllArticles"
-import Topics from "./Topic"
-import { useSearchParams } from 'react-router-dom';
-
+import { useState } from "react";
+import AllArticles from "./AllArticles";
+import Topics from "./Topic";
+import { useSearchParams } from "react-router-dom";
+import SortBy from "./SortBy";
 
 const Home = () => {
-    const [topic, setTopic] = useState('')
-    const [searchParams, setSearchParams] = useSearchParams();
-    return <>  
-     <Topics setTopic={setTopic} setSearchParams={setSearchParams}/>
-    <AllArticles topic={topic} searchParams={searchParams}/>
- 
-    </>
-}
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [order, setOrder] = useState("desc");
 
-export default Home
+  return (
+    <>
+      <div className="filters">
+        <Topics />
+        <SortBy setSearchParams={setSearchParams} setOrder={setOrder} />
+      </div>
+
+      <AllArticles searchParams={searchParams} order={order} />
+    </>
+  );
+};
+
+export default Home;

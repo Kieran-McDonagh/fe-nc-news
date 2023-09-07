@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "../utils/api-utils";
+import { useNavigate } from "react-router-dom";
 
-const Topics = ({ setTopic, setSearchParams }) => {
-  const [options, setOptions] = useState([]);
-
+const Topics = () => {
+  const navigate = useNavigate();
+  const [topics, setTopics] = useState([]);
 
   useEffect(() => {
     getTopics().then(({ topics }) => {
-      setOptions(topics);
-      
+      setTopics(topics);
     });
   }, []);
 
   const handleChange = (event) => {
     event.preventDefault();
-    setTopic(event.target.value);
-    setSearchParams(`?topic=${event.target.value}`)
+    navigate(`/topic/${event.target.value}`);
   };
 
   return (
     <div className="topics-container">
       <label htmlFor="topics">
+        Topic:
         <select name="topics" id="topics" onChange={handleChange}>
           <option>All</option>
-          {options.map(({ slug }) => {
-            return <option key={slug}>{slug}</option>
+          {topics.map(({ slug }) => {
+            return <option key={slug}>{slug}</option>;
           })}
         </select>
       </label>

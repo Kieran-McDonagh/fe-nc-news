@@ -1,37 +1,22 @@
 import { postComment } from "../utils/api-utils";
-import { useContext, useState } from "react";
-import { UserContext } from "../contexts/userContext";
+import { useState } from "react";
 
-const PostComment = ({ article, setComments }) => {
-  const { user } = useContext(UserContext);
+const PostComment = ({ article, setComments, username }) => {
   const [newInput, setNewInput] = useState("");
   const { article_id } = article;
   const [err, setErr] = useState(null);
   const [usernameErr, setUsernameErr] = useState(null);
-  const [username, setUsername] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let foundUser = false;
-    user.forEach((user) => {
-      if (username === user.username) {
-        foundUser = true;
-        postComment(article_id, username, newInput)
-          .then((result) => {
-            setComments((comments) => [result, ...comments]);
-          })
-          .catch((err) => {
-            setErr("Something went wrong!");
-          });
-      }
-    });
-    if (!foundUser) {
-      setUsernameErr("Invalid username");
-    }
-    setNewInput("");
-    setUsername("");
+    postComment(article_id, username, newInput)
+      .then((result) => {
+        setComments((comments) => [result, ...comments]);
+      })
+      .catch((err) => {
+        setErr("Something went wrong!");
+      });
   };
-
   if (err) {
     return (
       <div className="alert-err">
@@ -72,15 +57,6 @@ const PostComment = ({ article, setComments }) => {
     <form className="new-comment-container" onSubmit={handleSubmit}>
       <label htmlFor="post-comment">new comment:</label>
       <div className="input-button-container">
-        <input
-          required
-          placeholder="username"
-          id="enter-user"
-          value={username}
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-        ></input>
         <textarea
           required
           placeholder="Your comment..."

@@ -65,7 +65,6 @@ const IndividualArticle = () => {
         <img src={articleToDisplay.article_img_url} alt="" />
         <p className="article-body">{articleToDisplay.body}</p>
       </section>
-
       {voteErr ? (
         <div className="alert-err">
           <h3>{voteErr}</h3>

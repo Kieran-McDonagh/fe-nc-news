@@ -119,6 +119,7 @@ h1 {
 }
 
 .comments-section ul {
+  border: 1px solid;
   border-radius: 10px;
   background-color: #e9d3f1;
   list-style-type: none;
@@ -148,11 +149,27 @@ nav {
 /* login */
 
 .login-form {
-  width: 200px;
+  width: 90%;
   margin: 20px auto;
   background-color: #9097af;
   border-radius: 10px;
+  font-size: 16px;
   padding: 10px;
+}
+
+.login-form input{
+  font-size: 16px;
+  height: 20px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.login-form button {
+  background-color: #b5c2b7;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 20px;
+  cursor: pointer;
 }
 
 /* login error */
@@ -176,6 +193,7 @@ nav {
 .new-comment-container {
   background-color: #a7adc1;
   border-radius: 10px;
+  border: 1px solid;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -223,6 +241,20 @@ nav {
 
 .new-comment-container button:hover {
   background-color: #0056b3;
+}
+
+.delete-button {
+  background-color: #c07171;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  float: right;
+}
+
+.delete-button:hover {
+  background-color: #f21b1b;
 }
 
 /* alert error */
@@ -276,7 +308,7 @@ nav {
   border-radius: 5px;
 }
 
-.sortby-container button{
+.sortby-container button {
   display: inline;
 }
 

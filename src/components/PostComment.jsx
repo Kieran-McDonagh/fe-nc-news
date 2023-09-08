@@ -5,13 +5,13 @@ const PostComment = ({ article, setComments, username }) => {
   const [newInput, setNewInput] = useState("");
   const { article_id } = article;
   const [err, setErr] = useState(null);
-  const [usernameErr, setUsernameErr] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     postComment(article_id, username, newInput)
       .then((result) => {
         setComments((comments) => [result, ...comments]);
+        setNewInput('')
       })
       .catch((err) => {
         setErr("Something went wrong!");
@@ -24,27 +24,6 @@ const PostComment = ({ article, setComments, username }) => {
         <button
           onClick={() => {
             setErr(false);
-          }}
-        >
-          retry
-        </button>
-      </div>
-    );
-  }
-
-  if (usernameErr) {
-    return (
-      <div className="alert-err">
-        <h3>{usernameErr}</h3>
-        <span>Try one of these:</span>
-        <ul>
-          <li>tickle122</li>
-          <li>grumpy19</li>
-          <li>jessjelly</li>
-        </ul>
-        <button
-          onClick={() => {
-            setUsernameErr(null);
           }}
         >
           retry

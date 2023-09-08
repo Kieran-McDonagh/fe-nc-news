@@ -1,6 +1,7 @@
 # NC News
 
 ## Table of Contents
+
 - [Deployed Version](#deployed-version)
 - [About the Project](#about-the-project)
 - [Back End Repository](#back-end-repository)
@@ -8,18 +9,19 @@
 - [Getting Started](#getting-started)
 - [Contact](#contact)
 
-
 ## Deployed Version
 
 [NC News](https://kieran-nc-news.netlify.app/)
 
 ## About the Project
 
-This news web app project was created to demonstrate my ability to make an interactive, full-stack application using React. Features include: Displaying articles by topic, the ability to sort displayed articles, liking or disliking an article, and posting or deleting comments. 
+This news web app project was created to demonstrate my ability to make an interactive, full-stack application using React. Features include: Displaying articles by topic, the ability to sort displayed articles, liking or disliking an article, and posting or deleting comments.
 
 ## Back End Repository
 
-[NC News API](https://news-api-rist.onrender.com/api/) This is a link to the API I previously created to serve as a the back end for this project.
+[NC News API](https://github.com/Kieran-McDonagh/be-news-project) This is a link to the API I previously created to serve as a the back end for this project.
+
+[Hosted API](https://news-api-rist.onrender.com/api/) This is a link to my API hosted on render.
 
 ## Prerequisites
 
@@ -33,8 +35,8 @@ Follow these steps to run the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-    ```
+   git clone https://github.com/Kieran-McDonagh/fe-nc-news.git
+   ```
 2. Change to the project directory:
    ```bash
     cd your-repo

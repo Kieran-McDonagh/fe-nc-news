@@ -31,7 +31,7 @@ h1 {
 
 .article-card {
   width: 350px;
-  height: 400px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;

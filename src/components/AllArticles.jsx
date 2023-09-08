@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
 import { getAllArticles } from "../utils/api-utils";
 import { useParams } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 const AllArticles = ({ searchParams, order }) => {
   const [articles, setArticles] = useState([]);
@@ -11,13 +12,15 @@ const AllArticles = ({ searchParams, order }) => {
   const sortByQuery = searchParams.get("sort_by");
 
   useEffect(() => {
+    setErr(null);
     getAllArticles(topic, sortByQuery, order)
       .then(({ articles }) => {
         setArticles(articles);
         setIsLoading(false);
       })
       .catch((err) => {
-        setErr("Error loading articles.");
+        setErr(err);
+        setIsLoading(false);
       });
   }, [topic, sortByQuery, order]);
 
@@ -26,7 +29,7 @@ const AllArticles = ({ searchParams, order }) => {
   }
 
   if (err) {
-    return <h2>{err}</h2>;
+    return <ErrorPage err={err} />;
   }
 
   return (

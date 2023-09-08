@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleById, patchVotesById } from "../utils/api-utils";
 import Comments from "./Comments";
+import ErrorPage from "./ErrorPage";
 
 const IndividualArticle = () => {
   const { article_id } = useParams();
@@ -23,7 +24,7 @@ const IndividualArticle = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setErr("Error fetching article.");
+        setErr(err);
         setIsLoading(false);
       });
   }, [article_id]);
@@ -54,7 +55,7 @@ const IndividualArticle = () => {
   }
 
   if (err) {
-    return <h3>{err}</h3>;
+    return <ErrorPage err={err}/>
   }
 
   return (

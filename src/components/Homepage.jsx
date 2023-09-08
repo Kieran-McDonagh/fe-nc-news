@@ -14,7 +14,6 @@ const Home = () => {
         <Topics />
         <SortBy setSearchParams={setSearchParams} setOrder={setOrder} />
       </div>
-
       <AllArticles searchParams={searchParams} order={order} />
     </>
   );

@@ -3,7 +3,7 @@ import axios from "axios";
 const baseUrl = `https://news-api-rist.onrender.com/api`;
 
 const getAllArticles = (topic, sortby, order) => {
-  order ? order : order = 'desc'
+  order ? order : (order = "desc");
   topic ? topic : (topic = "All");
   sortby ? sortby : (sortby = "created_at");
   if (topic === "All") {
@@ -14,7 +14,9 @@ const getAllArticles = (topic, sortby, order) => {
       });
   } else {
     return axios
-      .get(`${baseUrl}/articles?topic=${topic}&sort_by=${sortby}&order=${order}`)
+      .get(
+        `${baseUrl}/articles?topic=${topic}&sort_by=${sortby}&order=${order}`
+      )
       .then(({ data }) => {
         return data;
       });
@@ -62,6 +64,12 @@ const getTopics = () => {
   });
 };
 
+const deleteComment = (commentId) => {
+  return axios.delete(`${baseUrl}/comments/${commentId}`).then(({ data }) => {
+    return data;
+  });
+};
+
 export {
   getAllArticles,
   getArticleById,
@@ -70,4 +78,5 @@ export {
   getUsers,
   postComment,
   getTopics,
+  deleteComment,
 };

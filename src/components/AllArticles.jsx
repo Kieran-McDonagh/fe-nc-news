@@ -9,8 +9,6 @@ const AllArticles = ({ searchParams, order }) => {
   const [err, setErr] = useState(null);
   const { topic } = useParams();
   const sortByQuery = searchParams.get("sort_by");
-  const orderQuery = searchParams.get("order");
-  console.log(orderQuery);
 
   useEffect(() => {
     getAllArticles(topic, sortByQuery, order)

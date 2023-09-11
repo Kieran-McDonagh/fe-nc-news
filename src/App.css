@@ -172,13 +172,14 @@ nav {
 
 .login-form input {
   font-size: 16px;
-  height: 20px;
+  height: 25px;
   margin-top: 5px;
   margin-left: 10px;
 }
 
 .login-form button {
   border: none;
+  font-size: 16px;
   border-radius: 4px;
   padding: 5px 20px;
   cursor: pointer;

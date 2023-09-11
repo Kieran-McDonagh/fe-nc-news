@@ -20,7 +20,13 @@ const UserComments = ({ comments, setComments, username }) => {
   return (
     <section className="comments-section">
       <span>Comments:</span>
-      {comments.map(({ author, comment_id, body, votes }) => {
+      {comments.map(({ author, comment_id, body, created_at, votes }) => {
+       const createdAt = new Date(created_at);
+       const formattedDate = createdAt.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+      });
         return (
           <ul className="comment" key={comment_id}>
             {deleteErr === comment_id ? (
@@ -31,7 +37,8 @@ const UserComments = ({ comments, setComments, username }) => {
               <>
                 <li>{author}:</li>
                 <li>"{body}"</li>
-                <li>votes: {votes}</li>
+                <li>Posted: {formattedDate}</li>
+                <li>Likes: {votes}</li>
               </>
             )}
             {username === author ? (

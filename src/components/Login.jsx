@@ -36,7 +36,7 @@ const Login = ({setUsername}) => {
                 setUsernameErr(null);
               }}
             >
-              retry
+              Retry
             </button>
           </div>
         );

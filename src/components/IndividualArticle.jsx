@@ -79,7 +79,7 @@ const IndividualArticle = () => {
         </div>
       ) : (
         <section className="article-votes">
-          <span>Votes: {votes}</span>
+          <span>Likes: {votes}</span>
 
           <button
             onClick={() => {

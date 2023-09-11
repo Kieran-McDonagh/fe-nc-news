@@ -1,9 +1,8 @@
 const SortBy = ({ setSearchParams, setOrder }) => {
   const options = [
-    "",
-    "comment_count",
-    "created_at",
-    "votes",
+    { value: "created_at", label: "Date posted" },
+    { value: "comment_count", label: "Comment count" },
+    { value: "votes", label: "Likes" },
   ];
 
   const handleChange = (event) => {
@@ -17,7 +16,11 @@ const SortBy = ({ setSearchParams, setOrder }) => {
         Sort by:
         <select name="sort" id="sort" onChange={handleChange}>
           {options.map((option) => {
-            return <option key={option}>{option}</option>;
+            return (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            );
           })}
         </select>
         <button

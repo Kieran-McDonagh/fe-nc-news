@@ -1,7 +1,7 @@
 body {
   margin: 0 auto;
   text-align: center;
-  background-color: #785784;
+  background-color: #f0e6f4;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
@@ -9,12 +9,12 @@ body {
 
 a {
   text-decoration: none;
-  color: black;
+  color: #2a2a2a;
 }
 
 h1 {
   margin: 0 auto;
-  background-color: #a7adc1;
+  background-color: #c1d1e0;
   font-size: 50px;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -34,24 +34,39 @@ h1 {
   height: 450px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 10px;
   padding: 5px;
   border-radius: 20px;
-  background-color: #b5c2b7;
+  background-color: #d0e1d0;
+  border: 1px solid;
 }
 
-.article-card img {
+.article-card-img {
   height: 200px;
   width: 300px;
   border-radius: 20px;
-  margin-bottom: 5px;
+  margin: 5px;
 }
 
-.article-title {
+.article-card-title {
   font-weight: 600;
-  margin-bottom: 5px;
+  margin: 5px;
+}
+
+.article-card-author {
+  margin: 5px auto;
+}
+
+.article-card-date {
+  margin: 5px auto;
+}
+
+.article-card-votes {
+  margin: 5px auto;
+}
+
+.article-card-comments {
+  margin: 5px auto;
 }
 
 /* Individual article styling */
@@ -60,7 +75,7 @@ h1 {
   padding: 10px;
   border-radius: 20px;
   margin: 10px;
-  background-color: #b5c2b7;
+  background-color: #d0e1d0;
 }
 
 .article-content {
@@ -106,7 +121,7 @@ h1 {
 }
 
 .article-votes button:hover {
-  background-color: #a7adc1;
+  background-color: #c1d1e0;
 }
 
 .comments-section {
@@ -121,7 +136,7 @@ h1 {
 .comments-section ul {
   border: 1px solid;
   border-radius: 10px;
-  background-color: #e9d3f1;
+  background-color: #c1d1e0; 
   list-style-type: none;
 }
 
@@ -129,21 +144,19 @@ h1 {
   margin: 10px;
 }
 
+.comment-author {
+  font-weight: 600;
+}
+
 /* Nav */
 
 nav {
-  background-color: #9097af;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  background-color: #c1d1e0;
 }
 
-.user-img {
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
+.home-nav {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /* login */
@@ -151,13 +164,13 @@ nav {
 .login-form {
   width: 90%;
   margin: 20px auto;
-  background-color: #9097af;
+  background-color: #c1d1e0; 
   border-radius: 10px;
   font-size: 16px;
   padding: 10px;
 }
 
-.login-form input{
+.login-form input {
   font-size: 16px;
   height: 20px;
   margin-top: 5px;
@@ -165,17 +178,20 @@ nav {
 }
 
 .login-form button {
-  background-color: #b5c2b7;
   border: none;
   border-radius: 4px;
   padding: 5px 20px;
   cursor: pointer;
 }
 
+.login-form button:hover {
+  background-color: #c1d1e0;
+}
+
 /* login error */
 
 .invalid-login {
-  background-color: #9097af;
+  background-color: #c1d1e0;
   border: 2px solid #8d4e4e;
   width: 80%;
   border-radius: 20px;
@@ -191,7 +207,7 @@ nav {
 /* new comment */
 
 .new-comment-container {
-  background-color: #a7adc1;
+  background-color: #c1d1e0; 
   border-radius: 10px;
   border: 1px solid;
   width: 80%;
@@ -224,8 +240,7 @@ nav {
 }
 
 .new-comment-container button {
-  background-color: #007bff;
-  color: white;
+  color: black;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -240,7 +255,7 @@ nav {
 }
 
 .new-comment-container button:hover {
-  background-color: #0056b3;
+  background-color: #89b1d6;
 }
 
 .delete-button {
@@ -290,7 +305,16 @@ nav {
   background-color: aliceblue;
 }
 
-/* topics */
+/* filters */
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 5px;
+}
 
 .topics-container select {
   height: 30px;
@@ -298,8 +322,6 @@ nav {
   font-size: 16px;
   border-radius: 5px;
 }
-
-/* sortby */
 
 .sortby-container select {
   height: 30px;
@@ -310,14 +332,10 @@ nav {
 
 .sortby-container button {
   display: inline;
+  margin: 2px;
+  height: 25px;
 }
 
-/* filters */
-
-.filters {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-  gap: 5px;
+.sortby-ascending {
+  height: 100px;
 }

@@ -11,7 +11,7 @@
 
 ## Deployed Version
 
-[NC News](https://kieran-nc-news.netlify.app/)
+[NC News](https://kieran-nc-news.netlify.app/) - Please note this is hosted using netlify's free tier and may take 20 - 30 seconds to initially load.
 
 ## About the Project
 
